@@ -1,6 +1,50 @@
 # Tic-tac-toe game with Minimax AI
 Tic-tac-toe game with an AI powered by the Minimax algorithm.
 
+Sample game:
+```
+Would you like to start or let the AI start?
+[1] I will start
+[2] Let AI start
+[Q] Quit
+> 2
+1 | 2 | 3
+4 | 5 | 6
+7 | 8 | 9
+AI played: 1 in 0.15596349999999992 seconds.
+X | 2 | 3
+4 | 5 | 6
+7 | 8 | 9
+Make your move! (Enter a number from 1-9)
+> 2
+X | O | 3
+4 | 5 | 6
+7 | 8 | 9
+AI played: 4 in 0.006518899999999661 seconds.
+X | O | 3
+X | 5 | 6
+7 | 8 | 9
+Make your move! (Enter a number from 1-9)
+> 7
+X | O | 3
+X | 5 | 6
+O | 8 | 9
+AI played: 5 in 0.000810400000000655 seconds.
+X | O | 3
+X | X | 6
+O | 8 | 9
+Make your move! (Enter a number from 1-9)
+> 9
+X | O | 3
+X | X | 6
+O | 8 | O
+AI played: 6 in 0.0001318999999995185 seconds.
+The AI has beaten you!
+X | O | 3
+X | X | X
+O | 8 | O
+```
+
 ## The Minimax Algorithm
 Minimax is an algorithm used in games with two players (e.g. tic-tac-toe, chess, checkers), where one player is the *maximizer* and the other is the *minimizer*. In this case,
 the 'X' is the maximizer and the 'O' is the minimizer.
