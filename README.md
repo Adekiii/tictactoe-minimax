@@ -55,20 +55,20 @@ since it is not computationally efficient to look at the end states and label th
 player has the advantage based on various properties. Nevertheless, in a game as simple as tic-tac-toe, there is no need to worry about that.
 
 Consider the following image, which illustrates the algorithm:
-![minimax1](minimax1.png)
+![minimax1](images/minimax1.png)
 
 Every node represents a state, and from every state the player's choice leads to a different state. The bottom layer consists of terminal nodes, those are states where the game has ended.
 Each terminal node is labeled with a 1, 0, or -1, which evaluates whether it is a win for X, a tie, or a win for O, respectively.
 We can see that the first turn is played by the maximizer, labeled with 'MAX'. Imagine the maximizer plays the move that leads to the node on its left. Now, it's the minimzer turn, and let's
 imagine it also plays the move that leads to its left. Now, the maximizer has two options: play the move that leads to 1, or the one that leads to -1. Of course, since the maximizer wants to maximize their score, they will play the move that leads to 1. Hence, we can fill that decision node with 1, and do the same for the rest of the nodes, which will result in the following:
-![minimax2](minimax2.png)
+![minimax2](images/minimax2.png)
 
 As you can see, the maximizer will win in almost every state, except the right one, where it has to choose between -1 and -1. Now, if we go one layer up, to where it's the minimzer's turn,
 of course, the minimzer will choose the move that leads to the lowest score. We can repeat the process and get this as a result:
-![minimax3](minimax3.png)
+![minimax3](images/minimax3.png)
 
 Now we are at the root node. Since the root node is the maximizing player, it will select the move that leads to the higher score, which is 1. Finally, this is the resulting graph:
-![minimax4](minimax4.png)
+![minimax4](images/minimax4.png)
 
 This means that, in this particular scenario, the maximizer will always win **as long as they play optimally**. 
 
