@@ -1,4 +1,8 @@
 from copy import deepcopy
+from timeit import default_timer as timer
+
+MIN = -float("Inf")
+MAX = float("Inf")
 
 
 # --- GAME LOGIC --- #
@@ -69,7 +73,7 @@ def evaluate_board(board):
         return 0
     
 
-def minimax(board, is_maximizing):
+def minimax(board, is_maximizing, alpha, beta):
     if game_over(board):
         return [evaluate_board(board), None]
     
@@ -85,14 +89,18 @@ def minimax(board, is_maximizing):
     for move in get_available_moves(board):
         new_board = deepcopy(board)
         play_move(new_board, move, player)
-        new_value = minimax(new_board, not is_maximizing)[0]
+        new_value = minimax(new_board, not is_maximizing, alpha, beta)[0]
 
         if is_maximizing and new_value > best_value:
             best_move = move
             best_value = new_value
+            alpha = max(alpha, best_value)
         if not is_maximizing and new_value < best_value:
             best_move = move
             best_value = new_value
+            beta = min(beta, best_value)
+        if alpha >= beta:
+            break
     
     return [best_value, best_move]
 
@@ -126,11 +134,13 @@ def main():
                     print("Invalid move! Try again!")
                     continue
             else:
+                start = timer()
                 if ai == "X":
-                    ai_move = minimax(board, True)[1]
+                    ai_move = minimax(board, True, MIN, MAX)[1]
                 else:
-                    ai_move = minimax(board, False)[1]
-                print(f"AI played: {ai_move}")
+                    ai_move = minimax(board, False, MIN, MAX)[1]
+                end = timer()
+                print(f"AI played: {ai_move} in {end-start} seconds.")
                 play_move(board, ai_move, ai)
             
             players_turn = not players_turn
